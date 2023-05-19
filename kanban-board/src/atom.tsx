@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 
 export const toDoState = atom({
-    key: "toDo",
-    default: ["a", "b", "c", "d", "e", "f"],
+    key: "toDo", 
+    default: ["A", "B", "C", "D", "E", "F", "G"]
 })
