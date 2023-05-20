@@ -3,11 +3,12 @@ import { Draggable } from "@hello-pangea/dnd";
 import styled from "styled-components";
 
 
-const Card = styled.div`
+const Card = styled.div<{isDragging:boolean}>`
   border-radius: 5px;
   margin-bottom: 5px;
   padding: 10px 10px;
-  background-color: ${(props) => props.theme.cardColor};
+  background-color: ${(props) => props.isDragging ? "#c1dbd5":  props.theme.cardColor};
+  box-shadow: ${props=> props.isDragging ? "0px 2px 5px rgba(0,0,0,0.05)":"none"} ;
 `;  
 
 interface IDragabbleCardProps {
@@ -16,16 +17,16 @@ interface IDragabbleCardProps {
 }
 
 function DragabbleCard({todo, index} : IDragabbleCardProps){
-    console.log(todo)
     return(
         <Draggable key = {todo} draggableId={todo} index={index} > 
         {/* 여기서 key와 draggableId는 같아야함 */}
-            {(magic) => 
+            {(magic, snapshot) => 
             <Card  
-            ref={magic.innerRef} 
-            {...magic.draggableProps} 
-            {...magic.dragHandleProps}>
-            {todo}
+                isDragging = {snapshot.isDragging}
+                ref={magic.innerRef} 
+                {...magic.draggableProps} 
+                {...magic.dragHandleProps}>
+                {todo}
             </Card>}
         </Draggable>
 

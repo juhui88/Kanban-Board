@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     background-color:${(props) => props.theme.bgColor};
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
   }
   menu, ol, ul {
     list-style: none;
